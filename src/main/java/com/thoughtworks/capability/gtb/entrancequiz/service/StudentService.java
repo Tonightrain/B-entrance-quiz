@@ -54,4 +54,8 @@ public class StudentService {
     public List<Student> getStudentList() {
         return studentList;
     }
+
+    public void addOneStudent(Student student) {
+        studentList.add(student);
+    }
 }
