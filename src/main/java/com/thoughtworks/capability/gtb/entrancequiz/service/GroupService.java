@@ -30,7 +30,7 @@ public class GroupService {
     public ResponseEntity modifyGroupName(int index, Group group) {
         Group group1 = groupList.get(index-1);
         for(Group group2 : groupList){
-            if (group.getGroupName() == group2.getGroupName()){
+            if (group.getGroupName()==group2.getGroupName()){
                 return ResponseEntity.status(HttpStatus.CONFLICT).build();
             }
         }

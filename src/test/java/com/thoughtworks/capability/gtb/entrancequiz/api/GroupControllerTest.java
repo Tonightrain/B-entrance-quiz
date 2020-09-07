@@ -43,4 +43,14 @@ class GroupControllerTest {
                 .andExpect(jsonPath("$[0].groupName",is("New Name")))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    void shouldModifyGroupNameFailure() throws Exception{
+        Group group = new Group("Team 1");
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonString = objectMapper.writeValueAsString(group);
+
+        mockMvc.perform(post("/group/modifyName/1").content(jsonString).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isConflict());
+    }
 }

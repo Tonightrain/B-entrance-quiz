@@ -23,4 +23,9 @@ public class StudentController {
     public void addOneStudent(@RequestBody Student student){
         studentService.addOneStudent(student);
     }
+
+    @PostMapping("/student/group")
+    public void getGroups(){
+
+    }
 }
