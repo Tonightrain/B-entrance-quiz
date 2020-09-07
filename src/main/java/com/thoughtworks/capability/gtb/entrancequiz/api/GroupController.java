@@ -1,23 +1,28 @@
 package com.thoughtworks.capability.gtb.entrancequiz.api;
 
 import com.thoughtworks.capability.gtb.entrancequiz.dto.Group;
-import org.springframework.web.bind.annotation.RestController;
+import com.thoughtworks.capability.gtb.entrancequiz.dto.Student;
+import com.thoughtworks.capability.gtb.entrancequiz.service.GroupService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class GroupController {
-    public List<Group> groupList = initStudents();
 
-    private List<Group> initStudents() {
-        List<Group> list = new ArrayList<>();
-        list.add(new Group("Team 1"));
-        list.add(new Group("Team 2"));
-        list.add(new Group("Team 3"));
-        list.add(new Group("Team 4"));
-        list.add(new Group("Team 5"));
-        list.add(new Group("Team 6"));
-        return list;
+    @Autowired
+    GroupService groupService;
+
+    @GetMapping("/group/list")
+    public List<Group> getGroupList(){
+        return groupService.getGroupList();
+    }
+
+    @PostMapping("/group/modifyName/{index}")
+    public ResponseEntity modifyGroupName(@PathVariable int index, @RequestBody Group group){
+        return groupService.modifyGroupName(index,group);
     }
 }

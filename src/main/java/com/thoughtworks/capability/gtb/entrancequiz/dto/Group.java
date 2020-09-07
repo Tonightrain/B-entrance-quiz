@@ -1,16 +1,21 @@
 package com.thoughtworks.capability.gtb.entrancequiz.dto;
 
 public class Group {
-    private String name;
+    private String groupName;
 
-    public Group(String name){
-        this.name = name;
+    public Group(String groupName){
+        this.groupName = groupName;
     }
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "name='" + name + '\'' +
-                '}';
+    public Group(){
+
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 }
